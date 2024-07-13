@@ -1,0 +1,3 @@
+[submodule "optar"]
+	path = optar
+	url = https://github.com/Askill/optar

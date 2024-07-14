@@ -1,0 +1,1 @@
+aws_project_tag = "web-crawler-on-eks"

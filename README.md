@@ -6,8 +6,8 @@
 - Mittels eines CI/CD Tools deiner Wahl soll der Terraform Code ausgeführt werden. 
 - Nutze ein git repository(s), um deinen Code zu verwalten. 
 - Bau einen Docker Container (oder nutze einen vorhanden) der einen einfachen/einmaligen Crawler Job ausführt gegen eine Webseite deiner Wahl. 
-  - *einmalger crawler run auf EKS erscheint mir nicht sinnvoll, hier würde ich üblicher Weise mit dem Kunden sprechen, warum EKS gewählt wurde*
-  - *sinnvoller erschein mir:*
+  - *einmalger crawler run auf EKS erscheint mir nicht sinnvoll, hier würde ich üblicher Weise mit dem Kunden sprechen, warum EKS gewählt wurde und ob eine Alternative besser geeignet wäre.*
+  - *sinnvoller erscheint mir:*
     - *entweder: kubernetes cronjob*
     - *oder: ECS fargate scheduled task / lambda, abhängig von der Laufzeit und weiteren Anforderungen*
 - Der Crawler Job soll die Daten auf einem S3 Bucket abspeichern. 
@@ -39,6 +39,10 @@ TODO:
 ### CI/CD
 
 Use github actions
+This section builds on top of this repository:  
+<https://github.com/trackit/terraform-boilerplate>, from a small AWS partnered consultancy in LA
+The last commit was about 3 years ago, which is why I forked it and would, in a production environment, continue working on my fork: <https://github.com/Askill/terraform-boilerplate>
+As some of the terraform code is using deprecated variables, only the ci/cd code is used.
 
 TODO:
 

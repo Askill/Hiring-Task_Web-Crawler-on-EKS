@@ -18,3 +18,9 @@ variable "stage" {
   type        = string
   default     = ""
 }
+
+variable "account_id" {
+  description = "account id"
+  type        = string
+  default     = ""
+}

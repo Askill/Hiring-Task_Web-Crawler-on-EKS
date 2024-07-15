@@ -3,7 +3,7 @@
 #############################
 
 locals {
-  cluster_name = "${var.project_name}-${var.stage}-eks-${random_string.suffix.result}"
+  cluster_name = "${var.project_name}-${var.stage}-eks-zgWAtfQT"
   vpc_name     = "${var.project_name}-${var.stage}-vpc"
 }
 
@@ -16,10 +16,6 @@ data "aws_availability_zones" "available" {
   }
 }
 
-resource "random_string" "suffix" {
-  length  = 8
-  special = false
-}
 
 #############################
 # Providers

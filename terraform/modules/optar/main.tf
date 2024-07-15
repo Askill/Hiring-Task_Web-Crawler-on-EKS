@@ -3,7 +3,7 @@
 #############################
 
 locals {
-  cluster_name = "${var.project_name}-${var.stage}-eks-zgWAtfQT"
+  cluster_name = "${var.project_name}-${var.stage}-eks"
   vpc_name     = "${var.project_name}-${var.stage}-vpc"
 }
 

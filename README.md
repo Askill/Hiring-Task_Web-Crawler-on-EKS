@@ -30,11 +30,12 @@ This crawler is specifically designed for news sites and blogs and not for conte
 TODO:
 
 - tests
-  - unit tests
+  - unit tests: ✔️ tested manually, not robust enough to be a library, code coverage of 80% or higher would be unreasonable time invest
   - int tests:
-    - local mock site
-    - pytest code
-- docker-compose, with volume mount
+    - local mock site ❌ not doing
+    - pytest code 
+- docker-compose ✔️
+- make work with S3 ✔️
 
 ### CI/CD
 
@@ -46,20 +47,19 @@ As some of the terraform code is using deprecated variables, only the ci/cd code
 
 TODO:
 
-- setup github actions
-- build image
-- run tests
-- run terraform deploy
+- setup github actions ✔️
+- build image ✔️
+- run tests 
+- run terraform deploy ✔️
 
 ### AWS
 
 TODO:
 
-- setup terraform
-- <https://developer.hashicorp.com/terraform/tutorials/kubernetes/eks>
-- Create Helm Chart
-  - pod
-  - service
-- create Kubernetes CronJob
-- create s3
-- adjust container to pull sites.txt and keywords.txt contents from config map (or s3, if no time)
+- setup terraform ✔️
+  - <https://developer.hashicorp.com/terraform/tutorials/kubernetes/eks> 
+- create Kubernetes deployment ✔️
+- create s3 ✔️
+- adjust container to pull sites.txt and keywords.txt contents from config map (or s3, if no time)❌
+  - not doing
+- 

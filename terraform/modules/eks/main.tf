@@ -225,10 +225,15 @@ resource "aws_iam_role" "optar_s3_cache_access_role" {
     Version = "2012-10-17"
     Statement = [
       {
-        Action = "sts:AssumeRole"
+        Action = "sts:AssumeRoleWithWebIdentity"
         Effect = "Allow"
         Principal = {
-          Service = "eks.amazonaws.com"
+          Federated = "${module.eks.oidc_provider}"
+        }
+        Condition = {
+          StringEquals = {
+            "${module.eks.oidc_provider}:sub": "system:serviceaccount:default:optar-s3-cache-service-account"
+          }
         }
       },
     ]

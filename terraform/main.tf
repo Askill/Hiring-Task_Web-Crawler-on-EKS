@@ -25,3 +25,11 @@ module "s3" {
     project_name = "optar"
     account_id   = "705632797485"
 }
+
+module "ecr" {
+    source = "./modules/ecr"
+    
+    stage        = "dev"
+    project_name = "optar"
+    account_id   = "705632797485"
+}

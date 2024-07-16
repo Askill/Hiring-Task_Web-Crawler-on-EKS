@@ -57,4 +57,5 @@ jobs:
       run: |
         sed -i "s|DOCKER_IMAGE|$ECR_REGISTRY/$ECR_REPOSITORY:v0.$IMAGE_TAG|g" ./optar/deployment.yaml
         cat ./optar/deployment.yaml
+        kubectl version
         kubectl apply -f ./optar/deployment.yaml

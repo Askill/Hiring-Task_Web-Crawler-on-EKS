@@ -26,7 +26,7 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Environment = "dev"
+      Environment = var.stage
       Project     = "web-crawler-on-eks"
     }
   }
@@ -38,35 +38,6 @@ provider "kubernetes" {
 }
 data "aws_eks_cluster_auth" "cluster_auth" {
   name = local.cluster_name
-}
-
-#############################
-# VPC
-#############################
-
-module "vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
-  version = "5.8.1"
-
-  name = local.vpc_name
-
-  cidr = "10.0.0.0/16"
-  azs  = slice(data.aws_availability_zones.available.names, 0, 3)
-
-  private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
-  public_subnets  = ["10.0.4.0/24", "10.0.5.0/24", "10.0.6.0/24"]
-
-  enable_nat_gateway   = true
-  single_nat_gateway   = true
-  enable_dns_hostnames = true
-
-  public_subnet_tags = {
-    "kubernetes.io/role/elb" = 1
-  }
-
-  private_subnet_tags = {
-    "kubernetes.io/role/internal-elb" = 1
-  }
 }
 
 #############################
@@ -90,8 +61,8 @@ module "eks" {
       service_account_role_arn = module.irsa-ebs-csi.iam_role_arn
     }
   }
-  vpc_id     = module.vpc.vpc_id
-  subnet_ids = module.vpc.private_subnets
+  vpc_id     = var.vpc_id
+  subnet_ids = var.subnet_ids
 
   eks_managed_node_group_defaults = {
     ami_type = "AL2_x86_64"
@@ -289,8 +260,8 @@ resource "aws_iam_policy" "optar_s3_cache_access_policy" {
           "s3:ListBucket"
         ]
         Resource = [
-          "${aws_s3_bucket.app_cache.arn}",
-          "${aws_s3_bucket.app_cache.arn}/*"
+          "${var.app_cache_arn}",
+          "${var.app_cache_arn}/*"
         ]
       }
     ]
@@ -316,25 +287,3 @@ resource "aws_iam_role_policy_attachment" "s3_access_attach" {
   policy_arn = aws_iam_policy.optar_s3_cache_access_policy.arn
 }
 
-
-# this could be its own module if multiple buckets are managed, 
-# however in this PoC, there is only one bucket so assuming a split of the overall infrastructure into workloads is conviniet
-# in a real project a central infra mono repo is common, where the EKS cluster would be shared, 
-# in that case a split of the modules into aws services seem more appropriate
-resource "aws_s3_bucket_lifecycle_configuration" "delete_after_3_days" {
-  bucket = aws_s3_bucket.app_cache.id
-
-  # this rule assumes the crawler runs at least once a day, 
-  # allowing for one missed day or time zone related issues, 
-  # the expiration is set to 3 days
-  rule {
-    id     = "delete-after-3-days"
-    status = "Enabled"
-    expiration {
-      days = 3
-    }
-  }
-}
-resource "aws_s3_bucket" "app_cache" {
-  bucket = "${var.project_name}-${var.stage}-cache"
-}

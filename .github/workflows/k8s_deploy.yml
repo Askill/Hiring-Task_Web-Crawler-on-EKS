@@ -1,10 +1,7 @@
 
 name: 'Deploy Optar to k8s'
 
-on: 
-  push:
-    branches:
-    - main
+on: workflow_dispatch
 
 env:
   ECR_REPOSITORY: optar

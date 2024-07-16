@@ -14,7 +14,7 @@ In this Github repo, there are multiple workflows:
 - to destroy all infrastructure
   - manual action
 - to deploy a new latest version of the aplication
-  - runs on push to main in this repo
+  - manual action
 
 ### Image build
 

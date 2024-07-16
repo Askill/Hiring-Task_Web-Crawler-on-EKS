@@ -52,7 +52,7 @@ data "aws_iam_policy_document" "eks" {
   }
 }
 
-resource "aws_ecr_repository_policy" "eks" {
-  repository = aws_ecr_repository.eks.name
-  policy     = data.aws_iam_policy_document.eks.json
+resource "aws_ecr_repository_policy" "optar" {
+  repository = aws_ecr_repository.optar.name
+  policy     = data.aws_iam_policy_document.optar.json
 }

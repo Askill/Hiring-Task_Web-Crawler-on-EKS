@@ -1,21 +1,21 @@
 # Web-Crawler-on-EKS
 
-## Tasks:
+## Tasks
 
-- Nutze `terraform` um diese Aufgabe umzusetzen. Wenn möglich gerne auch `terragrunt`. 
-- Mittels eines CI/CD Tools deiner Wahl soll der Terraform Code ausgeführt werden. 
-- Nutze ein git repository(s), um deinen Code zu verwalten. 
-- Bau einen Docker Container (oder nutze einen vorhanden) der einen einfachen/einmaligen Crawler Job ausführt gegen eine Webseite deiner Wahl. 
+- Nutze `terraform` um diese Aufgabe umzusetzen. Wenn möglich gerne auch `terragrunt`.
+- Mittels eines CI/CD Tools deiner Wahl soll der Terraform Code ausgeführt werden
+- Nutze ein git repository(s), um deinen Code zu verwalten.
+- Bau einen Docker Container (oder nutze einen vorhanden) der einen einfachen/einmaligen Crawler Job ausführt gegen eine Webseite deiner Wahl.
   - *einmalger crawler run auf EKS erscheint mir nicht sinnvoll, hier würde ich üblicher Weise mit dem Kunden sprechen, warum EKS gewählt wurde und ob eine Alternative besser geeignet wäre.*
   - *sinnvoller erscheint mir:*
     - *entweder: kubernetes cronjob*
     - *oder: ECS fargate scheduled task / lambda, abhängig von der Laufzeit und weiteren Anforderungen*
-- Der Crawler Job soll die Daten auf einem S3 Bucket abspeichern. 
+- Der Crawler Job soll die Daten auf einem S3 Bucket abspeichern.
 - Provisioniere diesen Container in der AWS auf einem EKS Cluster, wo der Job ausgeführt werden soll.
 - Stell sicher das der Code getestet wird
   - *automatisierte e2e tests wurden aus Zeitgründen ausgelassen, da unit tests in Kombination mit integration tests fast alle fälle abdecken können sollten.*
 - Bereite ein Deployment-Konzept auf und stelle es dar.
-- Bereite deine Lösung vor, als würdest du sie einem Kunden vorstellen. 
+- Bereite deine Lösung vor, als würdest du sie einem Kunden vorstellen.
 
 ## Solution
 
@@ -33,7 +33,7 @@ TODO:
   - unit tests: ✔️ tested manually, not robust enough to be a library, code coverage of 80% or higher would be unreasonable time invest
   - int tests:
     - local mock site ❌ not doing
-    - pytest code 
+    - pytest code
 - docker-compose ✔️
 - make work with S3 ✔️
 
@@ -49,7 +49,7 @@ TODO:
 
 - setup github actions ✔️
 - build image ✔️
-- run tests 
+- run tests
 - run terraform deploy ✔️
 
 ### AWS
@@ -57,10 +57,9 @@ TODO:
 TODO:
 
 - setup terraform ✔️
-  - <https://developer.hashicorp.com/terraform/tutorials/kubernetes/eks> 
+  - <https://developer.hashicorp.com/terraform/tutorials/kubernetes/eks>
 - create Kubernetes deployment ✔️
 - create s3 ✔️
 - allow s3 access from terraform ✔️
 - adjust container to pull sites.txt and keywords.txt contents from config map (or s3, if no time)❌
   - not doing
-- 

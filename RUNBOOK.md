@@ -28,7 +28,7 @@ The crawler is deployed as a K8s Job, defined in ./optar/deployment.yaml
 Which can be rolled out to the cluster with:  
 `kubectl apply -f .\deployment.yaml`
 
-Prerequisite: the correct kubectl config has been set with:   
+Prerequisite: the correct kubectl config has been set with:
 `aws eks --region eu-central-1 update-kubeconfig --name optar-dev-eks`
 
 ## Crawler config
@@ -46,4 +46,4 @@ Components of note:
   - created one registry (optar)
   - all users and roles in the account have pull and push access, fine for low security applications
 - S3 Bucket
-  - lifecycle rule to delete objects older that 3 days, assuming this crawler is run at least once per day, this leaves some room for error, while also ensuring low overhead
+  - lifecycle rule to delete objects older that 3 days, assuming this crawler is run at least once per day, this leaves some room for error, while also ensuring low overhead.

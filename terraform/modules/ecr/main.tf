@@ -23,7 +23,7 @@ resource "aws_ecr_repository" "optar" {
   }
 }
 
-data "aws_iam_policy_document" "eks" {
+data "aws_iam_policy_document" "optar" {
   statement {
     sid    = "allow eks"
     effect = "Allow"

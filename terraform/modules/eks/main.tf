@@ -232,7 +232,8 @@ resource "aws_iam_role" "optar_s3_cache_access_role" {
         }
         Condition = {
           StringEquals = {
-            "${module.eks.oidc_provider}:sub": "system:serviceaccount:default:optar-s3-cache-service-account"
+            "${module.eks.oidc_provider}:sub": "system:serviceaccount:default:optar-s3-cache-service-account",
+            "${module.eks.oidc_provider}:aud": "sts.amazonaws.com"
           }
         }
       },

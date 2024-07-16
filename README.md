@@ -23,7 +23,7 @@ All code, comments and documentation are written in english, as I am a big fan o
 
 ### Crawler
 
-I reused a crawler I had prepared earlier: `https://github.com/Askill/optar`  
+I reused a crawler I had made earlier: `https://github.com/Askill/optar`  
 This crawler traverses all links on a given website, caches this tree, compares the new tree to previously cached ones and searches all *new* sites for specific keywords.
 This crawler is specifically designed for news sites and blogs and not for content changes on normally static sites like a companies home page.
 
@@ -60,6 +60,7 @@ TODO:
   - <https://developer.hashicorp.com/terraform/tutorials/kubernetes/eks> 
 - create Kubernetes deployment ✔️
 - create s3 ✔️
+- allow s3 access from terraform ✔️
 - adjust container to pull sites.txt and keywords.txt contents from config map (or s3, if no time)❌
   - not doing
 - 

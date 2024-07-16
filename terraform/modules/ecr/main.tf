@@ -30,7 +30,7 @@ data "aws_iam_policy_document" "optar" {
 
     principals {
       type        = "AWS"
-      identifiers = [var.account_id]
+      identifiers = ["arn:aws:iam::${var.account_id}:*"]
     }
 
     actions = [

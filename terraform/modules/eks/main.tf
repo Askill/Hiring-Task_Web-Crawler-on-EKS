@@ -228,7 +228,7 @@ resource "aws_iam_role" "optar_s3_cache_access_role" {
         Action = "sts:AssumeRoleWithWebIdentity"
         Effect = "Allow"
         Principal = {
-          Federated = "${module.eks.oidc_provider}"
+          Federated = "arn:aws:iam::${var.account_id}:oidc-provider/${module.eks.oidc_provider}"
         }
         Condition = {
           StringEquals = {

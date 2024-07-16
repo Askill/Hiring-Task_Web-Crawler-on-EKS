@@ -21,7 +21,7 @@ jobs:
       uses: prompt/actions-commit-hash@v2
 
     - name: Check out code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with: 
         submodules: true
     

@@ -35,6 +35,10 @@ Prerequisite: the correct kubectl config has been set with:
 
 For this PoC, no changes have been made to how the crawler gets its config, meaning the sites and keywords are set during build time as lines in `./optar/keywords.txt` and `./optar/sites.txt`.
 
+I reused a crawler I had made earlier: `https://github.com/Askill/optar`  
+This crawler traverses all links on a given website, caches this tree, compares the new tree to previously cached ones and searches all *new* sites for specific keywords.
+This crawler is specifically designed for news sites and blogs and not for content changes on normally static sites like a companies home page.
+
 ## AWS Infrastructure
 
 Components of note:

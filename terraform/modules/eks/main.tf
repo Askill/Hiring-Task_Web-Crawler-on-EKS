@@ -42,7 +42,8 @@ module "eks" {
   cluster_version     = "1.30"
   authentication_mode = "API_AND_CONFIG_MAP"
 
-  # for higher security requirements: use false and add a bastion host that is in a public subnet of this VPC, and add  this bastion host to the NACL of the private subnets
+  # for higher security requirements: use false and add a bastion host that is in a public subnet of this VPC, 
+  # and add this bastion host to the NACL of the private subnets
   cluster_endpoint_public_access           = true
   enable_cluster_creator_admin_permissions = true
 

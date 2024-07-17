@@ -1,4 +1,4 @@
-# Web-Crawler-on-EKS
+# Web-Crawler-on-EKS [![Terraform](https://github.com/Askill/Web-Crawler-on-EKS/actions/workflows/terraform.yml/badge.svg)](https://github.com/Askill/Web-Crawler-on-EKS/actions/workflows/terraform.yml) [![Deploy Optar to k8s](https://github.com/Askill/Web-Crawler-on-EKS/actions/workflows/k8s_deploy.yml/badge.svg)](https://github.com/Askill/Web-Crawler-on-EKS/actions/workflows/k8s_deploy.yml)
 
 ## Tasks
 

@@ -11,13 +11,16 @@
     - *entweder: kubernetes cronjob*
     - *oder: ECS fargate scheduled task / lambda, abhängig von der Laufzeit und weiteren Anforderungen*
 - Der Crawler Job soll die Daten auf einem S3 Bucket abspeichern.
+  - *bei dem gewählten crawler würde das Ergebnis am ehesten per SNS abgesetzt, der S3 bucket wird in diesem Fall aber als Cache genutzt, somint sind read und write auf dem Bucket implementiert*
 - Provisioniere diesen Container in der AWS auf einem EKS Cluster, wo der Job ausgeführt werden soll.
 - Stell sicher das der Code getestet wird
-  - *automatisierte e2e tests wurden aus Zeitgründen ausgelassen, da unit tests in Kombination mit integration tests fast alle fälle abdecken können sollten.*
+  - *Tests demonstrieren die basics, auf extensive Implementierung oder hohe Testabdeckung wurde aber bewusst verzichtet*
 - Bereite ein Deployment-Konzept auf und stelle es dar.
 - Bereite deine Lösung vor, als würdest du sie einem Kunden vorstellen.
 
 ## Solution
+
+See ./RUNBOOK.md for technical details on the implementation.
 
 All code, comments and documentation are written in english, as I am a big fan of lived inclusivity. Unless specifically requests otherwise by the client I prefere english as my working language, even if the current team at the client is fully german speaking, as they might decide in the future to hire international developers.
 
@@ -33,7 +36,7 @@ TODO:
   - unit tests: ✔️ tested manually, not robust enough to be a library, code coverage of 80% or higher would be unreasonable time invest
   - int tests:
     - local mock site ❌ not doing
-    - pytest code
+    - pytest code ✔️
 - docker-compose ✔️
 - make work with S3 ✔️
 
@@ -49,7 +52,7 @@ TODO:
 
 - setup github actions ✔️
 - build image ✔️
-- run tests
+- run tests ✔️
 - run terraform deploy ✔️
 
 ### AWS

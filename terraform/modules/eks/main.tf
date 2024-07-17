@@ -90,7 +90,7 @@ module "irsa-ebs-csi" {
 }
 
 resource "kubernetes_config_map" "aws_auth_configmap_custom" {
-  
+
   metadata {
     name      = "aws-auth-custom"
     namespace = "kube-system"
@@ -107,7 +107,7 @@ resource "kubernetes_config_map" "aws_auth_configmap_custom" {
   groups:
     - reader
 YAML
-    mapUsers= <<YAML
+    mapUsers = <<YAML
 - rolearn: arn:aws:iam::${var.account_id}:role/admin
   username: reader
   groups:
@@ -232,8 +232,8 @@ resource "aws_iam_role" "optar_s3_cache_access_role" {
         }
         Condition = {
           StringEquals = {
-            "${module.eks.oidc_provider}:sub": "system:serviceaccount:default:optar-s3-cache-service-account",
-            "${module.eks.oidc_provider}:aud": "sts.amazonaws.com"
+            "${module.eks.oidc_provider}:sub" : "system:serviceaccount:default:optar-s3-cache-service-account",
+            "${module.eks.oidc_provider}:aud" : "sts.amazonaws.com"
           }
         }
       },

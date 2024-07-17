@@ -39,4 +39,8 @@ resource "aws_s3_bucket_lifecycle_configuration" "delete_after_3_days" {
 }
 resource "aws_s3_bucket" "app_cache" {
   bucket = "${var.project_name}-${var.stage}-cache"
+
+  # I would not enable this in a client setting, 
+  # this is purely for convinience for this specific hiring task
+  force_destroy = true
 }

@@ -7,20 +7,7 @@ locals {
   vpc_name     = "${var.project_name}-${var.stage}-vpc"
 }
 
-#############################
-# Providers
-#############################
 
-provider "aws" {
-  region = var.region
-
-  default_tags {
-    tags = {
-      Environment = var.stage
-      Project     = "web-crawler-on-eks"
-    }
-  }
-}
 provider "kubernetes" {
   host                   = module.eks.cluster_endpoint
   cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)

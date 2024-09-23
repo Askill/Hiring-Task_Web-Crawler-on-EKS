@@ -1,22 +1,24 @@
 # Web-Crawler-on-EKS [![Terraform](https://github.com/Askill/Web-Crawler-on-EKS/actions/workflows/terraform.yml/badge.svg)](https://github.com/Askill/Web-Crawler-on-EKS/actions/workflows/terraform.yml) [![Deploy Optar to k8s](https://github.com/Askill/Web-Crawler-on-EKS/actions/workflows/k8s_deploy.yml/badge.svg)](https://github.com/Askill/Web-Crawler-on-EKS/actions/workflows/k8s_deploy.yml)
 
-## Tasks
+## Hiring Tasks
 
-- Nutze `terraform` um diese Aufgabe umzusetzen. Wenn möglich gerne auch `terragrunt`.
-- Mittels eines CI/CD Tools deiner Wahl soll der Terraform Code ausgeführt werden
-- Nutze ein git repository(s), um deinen Code zu verwalten.
-- Bau einen Docker Container (oder nutze einen vorhanden) der einen einfachen/einmaligen Crawler Job ausführt gegen eine Webseite deiner Wahl.
-  - *einmalger crawler run auf EKS erscheint mir nicht sinnvoll, hier würde ich üblicher Weise mit dem Kunden sprechen, warum EKS gewählt wurde und ob eine Alternative besser geeignet wäre.*
-  - *sinnvoller erscheint mir:*
-    - *entweder: kubernetes cronjob*
-    - *oder: ECS fargate scheduled task / lambda, abhängig von der Laufzeit und weiteren Anforderungen*
-- Der Crawler Job soll die Daten auf einem S3 Bucket abspeichern.
-  - *bei dem gewählten crawler würde das Ergebnis am ehesten per SNS abgesetzt, der S3 bucket wird in diesem Fall aber als Cache genutzt, somint sind read und write auf dem Bucket implementiert*
-- Provisioniere diesen Container in der AWS auf einem EKS Cluster, wo der Job ausgeführt werden soll.
-- Stell sicher das der Code getestet wird
-  - *Tests demonstrieren die basics, auf extensive Implementierung oder hohe Testabdeckung wurde aber bewusst verzichtet*
-- Bereite ein Deployment-Konzept auf und stelle es dar.
-- Bereite deine Lösung vor, als würdest du sie einem Kunden vorstellen.
+Here’s the translation:
+
+- Use `terraform` to implement this task. If possible, feel free to use `terragrunt`.
+- Use a CI/CD tool of your choice to execute the Terraform code.
+- Use a git repository (or repositories) to manage your code.
+- Build a Docker container (or use an existing one) that runs a simple one-time crawler job against a website of your choice.
+  - *Running a one-time crawler on EKS doesn’t seem sensible to me. Normally, I would discuss with the client why EKS was chosen and whether an alternative might be more appropriate.*
+  - *A more reasonable approach seems to be:*
+    - *either: a Kubernetes cronjob*
+    - *or: an ECS Fargate scheduled task / Lambda, depending on runtime and other requirements*
+- The crawler job should save the data to an S3 bucket.
+  - *For the chosen crawler, the result would most likely be sent via SNS, but the S3 bucket is used as a cache in this case, so both read and write operations are implemented on the bucket.*
+- Provision this container in AWS on an EKS cluster where the job will be executed.
+- Ensure the code is tested.
+  - *The tests demonstrate the basics, but extensive implementation or high test coverage has been deliberately avoided.*
+- Prepare and present a deployment concept.
+- Prepare your solution as if you were presenting it to a client.
 
 ## Solution
 

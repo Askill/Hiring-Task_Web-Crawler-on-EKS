@@ -18,21 +18,6 @@ data "aws_availability_zones" "available" {
 
 
 #############################
-# Providers
-#############################
-
-provider "aws" {
-  region = var.region
-
-  default_tags {
-    tags = {
-      Environment = var.stage
-      Project     = "web-crawler-on-eks"
-    }
-  }
-}
-
-#############################
 # VPC
 #############################
 

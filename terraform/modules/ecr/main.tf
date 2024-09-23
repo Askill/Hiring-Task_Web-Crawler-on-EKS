@@ -1,19 +1,4 @@
 
-#############################
-# Providers
-#############################
-
-provider "aws" {
-  region = var.region
-
-  default_tags {
-    tags = {
-      Environment = var.stage
-      Project     = "web-crawler-on-eks"
-    }
-  }
-}
-
 resource "aws_ecr_repository" "optar" {
   name                 = "optar"
   image_tag_mutability = "MUTABLE"
